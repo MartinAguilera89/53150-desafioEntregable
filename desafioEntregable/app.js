@@ -1,7 +1,6 @@
 class ProductManager {
     constructor() {
-        this.products = [];
-        this.productIdCounter = 1;
+        this.products = []
     }
 
     addProduct(product) {
@@ -20,7 +19,7 @@ class ProductManager {
 
         // Crear un nuevo producto con un id autoincrementable
         const newProduct = {
-            id: this.productIdCounter++,
+            id: this.products.length + 1,
             title: product.title,
             description: product.description,
             price: product.price,
@@ -95,5 +94,3 @@ const productos = productManager.getProducts()
 const producto = productManager.getProductById(2)
 
 console.log(productos)
-
-
