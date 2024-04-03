@@ -1,0 +1,13 @@
+{
+    "name": "desafiosbackend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "start": "node  --watch desafioEntregable1/app.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+  }
+  
