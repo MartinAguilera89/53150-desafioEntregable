@@ -1,10 +1,10 @@
 {
-  "name": "desafiosbackend",
+  "name": "desafioentregable2",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "productManager.js",
   "scripts": {
-    "start": "node  --watch desafioEntregable2/app.js"
+    "start": "node --watch productManager.js"
   },
   "keywords": [],
   "author": "",
