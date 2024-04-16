@@ -79,5 +79,3 @@ class ProductManager {
 }
 
 module.exports = ProductManager;
-
-// Testing

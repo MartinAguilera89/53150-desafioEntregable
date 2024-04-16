@@ -1,0 +1,93 @@
+[
+    {
+      "id": 1,
+      "title": "Nuevo Producto 1",
+      "description": "Descripción del nuevo producto 1",
+      "price": 9.99,
+      "thumbnail": "imagen1.jpg",
+      "code": "151",
+      "stock": 10
+    },
+    {
+      "id": 2,
+      "title": "Nuevo Producto 2",
+      "description": "Descripción del nuevo producto 2",
+      "price": 9.99,
+      "thumbnail": "imagen2.jpg",
+      "code": "152",
+      "stock": 10
+    },
+    {
+      "id": 3,
+      "title": "Nuevo Producto 3",
+      "description": "Descripción del nuevo producto 3",
+      "price": 9.99,
+      "thumbnail": "imagen3.jpg",
+      "code": "153",
+      "stock": 15
+    },
+    {
+      "id": 4,
+      "title": "Nuevo Producto 4",
+      "description": "Descripción del nuevo producto 4",
+      "price": 9.99,
+      "thumbnail": "imagen4.jpg",
+      "code": "154",
+      "stock": 20
+    },
+    {
+      "id": 5,
+      "title": "Nuevo Producto 5",
+      "description": "Descripción del nuevo producto 5",
+      "price": 9.99,
+      "thumbnail": "imagen5.jpg",
+      "code": "155",
+      "stock": 8
+    },
+    {
+      "id": 6,
+      "title": "Nuevo Producto 6",
+      "description": "Descripción del nuevo producto 6",
+      "price": 9.99,
+      "thumbnail": "imagen6.jpg",
+      "code": "156",
+      "stock": 12
+    },
+    {
+      "id": 7,
+      "title": "Nuevo Producto 7",
+      "description": "Descripción del nuevo producto 7",
+      "price": 9.99,
+      "thumbnail": "imagen7.jpg",
+      "code": "157",
+      "stock": 18
+    },
+    {
+      "id": 8,
+      "title": "Nuevo Producto 8",
+      "description": "Descripción del nuevo producto 8",
+      "price": 9.99,
+      "thumbnail": "imagen8.jpg",
+      "code": "158",
+      "stock": 5
+    },
+    {
+      "id": 9,
+      "title": "Nuevo Producto 9",
+      "description": "Descripción del nuevo producto 9",
+      "price": 9.99,
+      "thumbnail": "imagen9.jpg",
+      "code": "159",
+      "stock": 25
+    },
+    {
+      "id": 10,
+      "title": "Nuevo Producto 10",
+      "description": "Descripción del nuevo producto 10",
+      "price": 9.99,
+      "thumbnail": "imagen10.jpg",
+      "code": "160",
+      "stock": 7
+    }
+  ]
+  
