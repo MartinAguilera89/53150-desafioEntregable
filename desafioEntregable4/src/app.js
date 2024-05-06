@@ -35,8 +35,33 @@ app.get('/realtimeproducts', (req, res) => {
 
 socketServer.on('connection', socket => {
   console.log('Cliente conectado');
-  const products = JSON.parse(fs.readFileSync('./src/data/products.json', 'utf-8'));
+
+const products = JSON.parse(fs.readFileSync('./src/data/products.json', 'utf-8'));
   socket.emit('productList', products);
+
+socket.on('addProduct', async product => {
+  try {
+    const products = JSON.parse(fs.readFileSync('./src/data/products.json', 'utf-8'));
+    products.push(product);
+    fs.writeFileSync('./src/data/products.json', JSON.stringify(products, null, 2));
+    
+    socketServer.emit('productAdded', product);
+  } catch (error) {
+    console.error('Error al agregar producto:', error);
+  }
+});
+
+socket.on('deleteProduct', async productId => {
+  try {
+    const products = JSON.parse(fs.readFileSync('./src/data/products.json', 'utf-8'));
+    const updatedProducts = products.filter(product => product.id !== productId);
+    fs.writeFileSync('./src/data/products.json', JSON.stringify(updatedProducts, null, 2));
+    
+    socketServer.emit('productDeleted', productId);
+  } catch (error) {
+    console.error('Error al eliminar producto:', error);
+  }
+});
 });
 
 server.listen(port, () => {
