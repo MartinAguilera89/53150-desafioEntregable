@@ -53,7 +53,7 @@ socketServer.on("connection", (socket) => {
 
   socket.on("deleteProduct", async (productId) => {
     try {
-      productId.id = parseInt(productId.id);
+      productId = parseInt(productId);
       productManager.deleteProduct(productId);
       
     } catch (error) {

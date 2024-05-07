@@ -1,10 +1,10 @@
 [
-    {
-        "id": 1,
-        "title": "Vaso",
-        "description": "Cristal",
-        "price": 200,
-        "code": "A001",
-        "stock": 6
-    }
+  {
+    "id": 1,
+    "title": "Vaso",
+    "description": "Cristal",
+    "price": 200,
+    "code": "A001",
+    "stock": 6
+  }
 ]
