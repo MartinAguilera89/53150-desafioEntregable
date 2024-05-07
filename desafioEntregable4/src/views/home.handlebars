@@ -1,9 +1,10 @@
 <h1>Lista de Productos</h1>
-    <ul>
+    <ul id="product-list">
         {{#each products}}
             <li>
                 <h3>{{title}}</h3>
                 <p>{{description}}</p>
+                <p>ID: {{id}}</p>
                 <p>Código: {{code}}</p>
                 <p>Precio: ${{price}}</p>
                 <p>Stock: {{stock}}</p>

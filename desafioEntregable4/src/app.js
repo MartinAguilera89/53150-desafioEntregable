@@ -45,7 +45,10 @@ socketServer.on("connection", (socket) => {
 
   socket.on("addProduct", async (product) => {
     try {
-      productManager.addProduct(product);
+      await productManager.addProduct(product);
+      const updatedProducts = await productManager.getProducts()
+      socketServer.emit("productList", updatedProducts)
+      socketServer.emit("productAdded", product)
     } catch (error) {
       console.error("Error al agregar producto:", error);
     }
@@ -54,15 +57,19 @@ socketServer.on("connection", (socket) => {
   socket.on("deleteProduct", async (productId) => {
     try {
       productId = parseInt(productId);
-      productManager.deleteProduct(productId);
-      
+      await productManager.deleteProduct(productId);
+      const updatedProducts = await productManager.getProducts()
+      socketServer.emit("productList", updatedProducts)
+      socketServer.emit("productDeleted", productId)
     } catch (error) {
       console.error("Error al eliminar producto:", error);
     }
   });
+
 });
 
 server.listen(port, () => {
   console.log(`Servidor escuchando en el puerto: ${port}`);
 });
-export { socketServer };
+
+export { socketServer };
