@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="index.js"></script>
+<script src="index.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Productos</title>
@@ -29,19 +29,25 @@
     </ul>
     
     {{#if isRealTime}}
-    <form id="product-form">
-        <label for="title">Título:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="description">Descripción:</label>
-        <input type="text" id="description" name="description" required>
-        <button type="submit">Agregar Producto</button>
-    </form>
+        <form id="product-form" action="/realtimeproducts">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" required>
+            <label for="price">Precio:</label>
+            <input type="text" id="price" name="description" required>        
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="description" required>        
+            <label for="stock">Stock:</label>
+            <input type="text" id="stock" name="description" required>
+            <button type="submit">Agregar Producto</button>
+        </form>
 
-    <form id="delete-product-form">
-        <label for="product-id">ID del Producto a Eliminar:</label>
-        <input type="text" id="product-id" name="product-id" required>
-        <button type="submit">Eliminar Producto</button>
-    </form>
+        <form id="delete-product-form" action="/realtimeproducts">
+            <label for="product-id">ID del Producto a Eliminar:</label>
+            <input type="text" id="product-id" name="product-id" required>
+            <button type="submit">Eliminar Producto</button>
+        </form>
     {{/if}}
 </body>
 </html>

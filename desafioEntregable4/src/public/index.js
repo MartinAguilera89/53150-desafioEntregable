@@ -1,18 +1,17 @@
-import { io } from 'socket.io-client';
-
-
 const socket = io();
 
 document.getElementById('product-form').addEventListener('submit', function (e) {
     e.preventDefault();
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
+    
+    const data = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        price: document.getElementById("price"),
+        code: document.getElementById("code"),
+        stock: document.getElementById("stock")
+    }
 
-    socket.emit('addProduct', {
-        title: title,
-        description: description
-
-    });
+    socket.emit("addProduct", data);
 
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
@@ -24,6 +23,5 @@ document.getElementById('delete-product-form').addEventListener('submit', functi
 
     socket.emit('deleteProduct', productId);
  
-    document.getElementById('product-id').value = '';
+    document.getElementById('product-id').value = '';
 });
-
