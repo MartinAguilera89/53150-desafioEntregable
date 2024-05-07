@@ -8,7 +8,7 @@
     <title>Lista de Productos</title>
 </head>
 <body>
-    <h1>Lista de Productos</h1>
+<h1>Lista de Productos</h1>
     <ul>
         {{#each products}}
             <li>
@@ -16,7 +16,6 @@
                 <p>{{description}}</p>
                 <p>Código: {{code}}</p>
                 <p>Precio: ${{price}}</p>
-                <p>Disponibilidad: {{status ? 'Disponible' : 'No disponible'}}</p>
                 <p>Stock: {{stock}}</p>
                 <p>Categoría: {{category}}</p>
                 <ul>
@@ -50,5 +49,8 @@
             <button type="submit">Eliminar Producto</button>
         </form>
     {{/if}}
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="index.js"></script>
 </body>
 </html>

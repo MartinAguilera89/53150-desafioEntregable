@@ -6,6 +6,7 @@ import { Server } from "socket.io";
 import handlebars from "express-handlebars";
 import fs from "fs";
 import ProductManager from "./productManager.js";
+import __dirname from './utils.js'
 
 const app = express();
 const server = http.createServer(app);
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 
+app.use(express.static(__dirname + "/public"));
 app.engine("handlebars", handlebars.engine());
 app.set("view engine", "handlebars");
 app.set("views", "./src/views");
