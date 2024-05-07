@@ -5,7 +5,7 @@ import http from "http";
 import { Server } from "socket.io";
 import handlebars from "express-handlebars";
 import fs from "fs";
-import ProductManager from "../productManager.js";
+import ProductManager from "./productManager.js";
 
 const app = express();
 const server = http.createServer(app);
@@ -61,7 +61,6 @@ socketServer.on("connection", (socket) => {
 });
 
 server.listen(port, () => {
-  console.log('Servidor escuchando el puerto: ${port}');
+  console.log(`Servidor escuchando en el puerto: ${port}`);
 });
-
 export { socketServer };

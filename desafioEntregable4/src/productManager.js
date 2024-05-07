@@ -88,7 +88,7 @@ class ProductManager {
   async readFile() {
     let finalData = [];
     try {
-      finalData = await fs.promises.readFile(this.path, 'utf-8');
+      finalData = await fs.readFile(this.path, 'utf-8');
       finalData = JSON.parse(finalData);
     } catch (error) {
       console.log('error al leer el archivo: ', error.message);
@@ -102,7 +102,7 @@ class ProductManager {
 
   async saveProductsToFile() {
     try {
-      await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2), 'utf-8');
+      await fs.writeFile(this.path, JSON.stringify(this.products, null, 2), 'utf-8');
       console.log('Datos guardados en el archivo:', this.path);
     } catch (error) {
       console.error('Error al guardar los datos en el archivo:', error.message);

@@ -6,9 +6,11 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
     const data = {
         title: document.getElementById("title").value,
         description: document.getElementById("description").value,
-        price: document.getElementById("price"),
-        code: document.getElementById("code"),
-        stock: document.getElementById("stock")
+        price: document.getElementById("price").value,
+        code: document.getElementById("code").value,
+        stock: document.getElementById("stock").value,
+        status: true,
+        category: document.getElementById("category").value,
     }
 
     socket.emit("addProduct", data);
@@ -23,5 +25,5 @@ document.getElementById('delete-product-form').addEventListener('submit', functi
 
     socket.emit('deleteProduct', productId);
  
-    document.getElementById('product-id').value = '';
+    document.getElementById('product-id').value = '';
 });
