@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+</head>
+<body>
+  <h1>Productos</h1>
+<div>
+    <h2>{{products.title}}</h2>
+    <p>{{products.description}}</p>
+    <p>Precio: ${{products.price}}</p>
+    <p>Categoría: {{products.category}}</p>
+    <p>Stock: {{products.stock}}</p>
+    <div>
+        {{#each products.thumbnails}}
+            <img src="{{this}}" alt="Thumbnail">
+        {{/each}}
+    </div>
+    <!-- Agregar al carrito -->
+    <button onclick="addToCart('{{products._id}}')">Agregar al carrito</button>
+</div>
+<div>
+    {{#if hasPrevPage}}
+      <a href="{{prevLink}}">Anterior</a>
+    {{/if}}
+    {{#if hasNextPage}}
+      <a href="{{nextLink}}">Siguiente</a>
+    {{/if}}
+  </div>
+
+  <script>
+    function addToCart(productId, cartId) {
+      fetch(`/api/carts/${cartId}/products/${productId}`, {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ quantity: 1 })
+      }).then(response => {
+            if (response.ok) {
+            alert('Producto agregado al carrito');
+            } else {
+            alert('Error al agregar el producto al carrito');
+      }
+  });
+}
+
+  </script>
+</body>
+</html>
