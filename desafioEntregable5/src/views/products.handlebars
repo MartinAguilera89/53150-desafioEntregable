@@ -6,47 +6,65 @@
   <title>Productos</title>
 </head>
 <body>
+    {{#if message}}
+    <h2>{{message}}</h2>
+  {{/if}}
+
   <h1>Productos</h1>
-<div>
-    <h2>{{products.title}}</h2>
-    <p>{{products.description}}</p>
-    <p>Precio: ${{products.price}}</p>
-    <p>Categoría: {{products.category}}</p>
-    <p>Stock: {{products.stock}}</p>
+  {{#each docs}}
+  <div>
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <p>Precio: ${{price}}</p>
+    <p>Categoría: {{category}}</p>
+    <p>Stock: {{stock}}</p>
     <div>
-        {{#each products.thumbnails}}
+        {{#each thumbnails}}
             <img src="{{this}}" alt="Thumbnail">
         {{/each}}
     </div>
     <!-- Agregar al carrito -->
-    <button onclick="addToCart('{{products._id}}')">Agregar al carrito</button>
-</div>
-<div>
+    <button onclick="addToCart('{{_id}}')">Agregar al carrito</button>
+  </div>
+  {{/each}}
+  <div>
     {{#if hasPrevPage}}
-      <a href="{{prevLink}}">Anterior</a>
+      <a href="?page={{prevPage}}&limit={{../limit}}">Anterior</a>
     {{/if}}
     {{#if hasNextPage}}
-      <a href="{{nextLink}}">Siguiente</a>
+      <a href="?page={{nextPage}}&limit={{../limit}}">Siguiente</a>
     {{/if}}
   </div>
+  <form action="/api/sessions/logout" method="POST">
+    <button type="submit">Cerrar Sesión</button>
+  </form>
 
-  <script>
-    function addToCart(productId, cartId) {
-      fetch(`/api/carts/${cartId}/products/${productId}`, {
-          method: 'POST',
-          headers: {
-          'Content-Type': 'application/json'
-        },
-          body: JSON.stringify({ quantity: 1 })
-      }).then(response => {
-            if (response.ok) {
-            alert('Producto agregado al carrito');
-            } else {
-            alert('Error al agregar el producto al carrito');
-      }
-  });
+<script>
+async function addToCart(cartId, productId) {
+  try {
+    const response = await fetch(`/api/carts/${cartId}/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        productId: productId,
+        quantity: 1
+      })
+    });
+
+    if (response.ok) {
+      alert('Producto agregado al carrito');
+    } else {
+      alert('Error al agregar producto al carrito1');
+    }
+  } catch (error) {
+    console.error('Error al agregar producto al carrito:', error);
+    alert('Error al agregar producto al carrito2');
+  }
 }
+</script>
 
-  </script>
+
 </body>
 </html>

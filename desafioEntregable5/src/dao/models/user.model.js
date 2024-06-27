@@ -5,10 +5,12 @@ import mongoose from "mongoose";
 const userCollection = "users"
 
 const userSchema = new mongoose.Schema({
-    nombre: {type: String, required:true, max: 100},
-    apellido: {type: String, required:true, max: 100},
-    email: {type: String, required:true, max: 50},
-})
+    nombre: { type: String, required: true, max: 100 },
+    apellido: { type: String, required: true, max: 100 },
+    email: { type: String, required: true, max: 50, unique: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ['user', 'admin'], default: 'user' } // Campo role
+});
 
 const userModel = mongoose.model(userCollection, userSchema)
 
