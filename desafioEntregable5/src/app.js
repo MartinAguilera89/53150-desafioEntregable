@@ -35,7 +35,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
-    // cookie: { maxAge: 180 * 60 * 1000 },
 }));
 
 app.use('/views', viewsRouter);
@@ -64,14 +63,6 @@ io.on('connection', (socket) => {
 
 app.get('/chat', (req, res) => {
     res.render('chat');
-});
-
-app.get('/products', (req, res) => {
-    res.render('products', products);
-});
-
-app.get('/carts', (req, res) => {
-    res.render('carts');
 });
 
 server.listen(PORT, () => {

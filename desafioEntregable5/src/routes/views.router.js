@@ -1,8 +1,12 @@
 import { Router } from 'express';
 import productManager from '../dao/clases/productManager.js';
-import { isAuthenticated, isNotAuthenticated } from '../middleware/auth.js';  // Importar middleware
-
+import { isAuthenticated, isNotAuthenticated } from '../middleware/auth.js';
 const router = Router();
+
+router.get('/', isNotAuthenticated, (req, res) => {
+  res.redirect('/views/login');
+});
+
 router.get('/login', isNotAuthenticated, (req, res) => {
   res.render('login');
 });
