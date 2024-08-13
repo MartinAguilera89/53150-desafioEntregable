@@ -13,7 +13,13 @@ import cartRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js';
 import sessionsRouter from './routes/sessions.router.js';  // Nueva importación
 import messageModel from './dao/models/message.model.js';
-import __dirname from "./utils.js";
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import passport from 'passport';
+import initializePassport from './config/passport.config.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
@@ -36,6 +42,10 @@ app.use(session({
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: process.env.MONGO_URL }),
 }));
+
+initializePassport()
+app.use(passport.initialize())
+app.use(passport.session())
 
 app.use('/', viewsRouter);
 app.use('/api/users', userRouter);

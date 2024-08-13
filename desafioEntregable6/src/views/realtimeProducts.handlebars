@@ -1,0 +1,48 @@
+<h1>Lista de Productos</h1>
+    <ul id="product-list">
+        {{#each products}}
+            <li>
+                <h3>{{title}}</h3>
+                <p>{{description}}</p>
+                <p>ID: {{id}}</p>
+                <p>Código: {{code}}</p>
+                <p>Precio: ${{price}}</p>
+                <p>Stock: {{stock}}</p>
+                <p>Categoría: {{category}}</p>
+                <ul>
+                    {{#each thumbnails}}
+                        <li><img src="{{this}}" alt="Thumbnail"></li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+    
+    {{#if isRealTime}}
+        <form id="product-form" action="/realtimeproducts">
+            <label for="title">Título:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="description">Descripción:</label>
+            <input type="text" id="description" name="description" required>
+            <label for="price">Precio:</label>
+            <input type="text" id="price" name="price" required>        
+            <label for="code">Código:</label>
+            <input type="text" id="code" name="code" required>        
+            <label for="stock">Stock:</label>
+            <input type="text" id="stock" name="stock" required>
+            <label for="category">Categoria:</label>
+            <input type="text" id="category" name="category" required>
+            <button type="submit">Agregar Producto</button>
+        </form>
+
+        <form id="delete-product-form" action="/realtimeproducts">
+            <label for="product-id">ID del Producto a Eliminar:</label>
+            <input type="text" id="product-id" name="product-id" required>
+            <button type="submit">Eliminar Producto</button>
+        </form>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="index.js"></script>
+    {{/if}}
+
+
