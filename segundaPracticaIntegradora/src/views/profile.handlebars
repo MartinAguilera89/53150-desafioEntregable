@@ -1,0 +1,17 @@
+<h2>Perfil de Usuario</h2>
+<p>Nombre: {{user.nombre}}</p>
+<p>Apellido: {{user.apellido}}</p>
+<p>Email: {{user.email}}</p>
+<p>Rol: {{user.role}}</p>
+
+<form action="/carrito" method="GET">
+    <button type="submit">Ver mi carrito</button>
+  </form>
+
+<form action="/products?" method="GET">
+    <button type="submit">Seguir comprando</button>
+  </form>
+  
+<form action="/api/sessions/logout" method="POST">
+    <button type="submit">Cerrar Sesión</button>
+</form>

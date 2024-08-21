@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos</title>
+</head>
+<body>
+    {{#if message}}
+    <h2>{{message}}</h2>
+  {{/if}}
+
+  <h1>Productos</h1>
+  {{#each docs}}
+  <div>
+    <h2>{{title}}</h2>
+    <p>{{description}}</p>
+    <p>Precio: ${{price}}</p>
+    <p>Categoría: {{category}}</p>
+    <p>Stock: {{stock}}</p>
+    <div>
+        {{#each thumbnails}}
+            <img src="{{this}}" alt="Thumbnail">
+        {{/each}}
+    </div>
+    <!-- Agregar al carrito -->
+    <button onclick="addToCart('{{_id}}')">Agregar al carrito</button>
+  </div>
+  {{/each}}
+  <div>
+    {{#if hasPrevPage}}
+      <a href="?page={{prevPage}}&limit={{../limit}}">Anterior</a>
+    {{/if}}
+    {{#if hasNextPage}}
+      <a href="?page={{nextPage}}&limit={{../limit}}">Siguiente</a>
+    {{/if}}
+  </div>
+  <form action="/api/sessions/logout" method="POST">
+    <button type="submit">Cerrar Sesión</button>
+    </form>
+      </form>
+  <form action="/carrito" method="GET">
+    <button type="submit">Ver Carrito</button>
+  </form>
+  <form action="/profile" method="GET">
+    <button type="submit">Perfil</button>
+  </form>
+
+<script>
+async function addToCart(productId) {
+  try {
+    const response = await fetch(`/api/carts/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        productId: productId,
+        quantity: 1
+      })
+    });
+
+    if (response.ok) {
+      alert('Producto agregado al carrito');
+    } else {
+      alert('Error al agregar producto al carrito1');
+    }
+  } catch (error) {
+    console.error('Error al agregar producto al carrito:', error);
+    alert('Error al agregar producto al carrito2');
+  }
+}
+</script>
+
+
+</body>
+</html>

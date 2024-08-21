@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito</title>
+</head>
+<body>
+  <h1>Carrito</h1>
+  {{#if cart.products.length}}
+    <ul>
+      {{#each cart.products}}
+        <li>
+          <strong>Producto:</strong> {{this.product.title}} - 
+          <strong>Cantidad:</strong> {{this.quantity}} - 
+          <strong>Precio:</strong> ${{this.product.price}}
+        </li>
+      {{/each}}
+    </ul>
+      <script>
+    function removeFromCart(productId) {
+      fetch(`/api/carts/products/${productId}`, {
+        method: 'DELETE'
+      }).then(response => {
+        if (response.ok) {
+          alert('Producto eliminado del carrito');
+          location.reload();
+        } else {
+          alert('Error al eliminar producto del carrito');
+        }
+      });
+    }
+
+    function emptyCart() {
+      fetch(`/api/carts`, {
+        method: 'DELETE'
+      }).then(response => {
+        if (response.ok) {
+          alert('Carrito vaciado');
+          location.reload();
+        } else {
+          alert('Error al vaciar el carrito');
+        }
+      });
+    }
+  </script>
+  {{else}}
+    <p>Carrito vacío</p>
+  {{/if}}
+  <button onclick="emptyCart('{{cart._id}}')">Vaciar Carrito</button>
+    <form action="/profile" method="GET">
+    <button type="submit">Volver a Perfil</button>
+  </form>
+    <form action="/products?" method="GET">
+    <button type="submit">Seguir comprando</button>
+  </form>
+</body>
+</html>
